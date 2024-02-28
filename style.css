@@ -5,6 +5,9 @@ html{
 body{
     margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     background-color: whitesmoke;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
@@ -18,9 +21,16 @@ input{
     border-radius: 8px;
     margin: 8px 0;
     height: 32px;
+    border: 1px solid #000000;
+    outline: none;
 }
 input:focus::placeholder{
-    
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 12px;
+    color: #FE0000;
+    background-color: white;
 }
 button{
     background-color: #FE0000;
@@ -29,6 +39,7 @@ button{
     height: 48px;
     padding: 8px;
     border-radius: 8px;
+    border: 1px solid #000000;
     margin: 8px 0;
     cursor: pointer;
 }
@@ -77,6 +88,25 @@ header img{
 #pokemon-image{
     margin-top: -180px;
 }
+/* MAIN CONTAINER */
+#main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    height: fit-content;
+    background-color: #8baa7f;
+    padding: 24px;
+}
+#pokemon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: wheat;
+    height: 250px;
+    width: 250px;
+}
 /* FOOTER STYLE */
 footer{
     background-color: white;
@@ -85,7 +115,7 @@ footer{
     align-items: center;
     height: 64px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }

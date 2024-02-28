@@ -1,4 +1,5 @@
-let currentPokemon;
+let pokemon;
+
 let NORMAL_COLOR = '#AAAA99';
 let FIGHTING_COLOR = '#BB5545';
 let FLYING_COLOR = '#8899FF';
@@ -15,20 +16,37 @@ let PSYCHIC_COLOR = '#EE5499';
 let ICE_COLOR = '#66CCFF';
 let DRAGON_COLOR = '#7867EE';
 
-let max = 20;
+let pokedex = [];
+let id = [];
 
-async function loadPokemon(max){
-   let url = `https://pokeapi.co/api/v2/pokemon/?limit=${max}`;
+async function loadPokemon() {
+    let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151`;
     let response = await fetch(url);
-    currentPokemon = await response.json();
-    console.log(currentPokemon);
-
-    renderPokemonInfo();
-
+    pokemon = await response.json();
+    console.log(pokemon);
+    renderPokedex();
+    //renderPokemonInfo(); // --> JUNUS CODE
 }
 
-function renderPokemonInfo(){
-    document.getElementById('pokemon-name').innerHTML = currentPokemon['name'].charAt(0).toUpperCase() + currentPokemon['name'].slice(1);
-    document.getElementById('pokemon-id').innerHTML = currentPokemon['id'];
-    document.getElementById('pokemon-image').src = currentPokemon['sprites']['other']['dream_world']['front_default'];
+// function renderPokemonInfo() { // --> JUNUS CODE
+//     document.getElementById('pokemon-name').innerHTML = pokemon['name'].charAt(0).toUpperCase() + pokemon['name'].slice(1);
+//     document.getElementById('pokemon-id').innerHTML = pokemon['id'];
+//     document.getElementById('pokemon-image').src = pokemon['sprites']['other']['dream_world']['front_default'];
+// }
+
+async function renderPokedex() {
+    document.getElementById('main-container').innerHTML = '';
+    pokedex = pokemon['results'];
+    // let pokeURL = `https://pokeapi.co/api/v2/pokemon/0/`;
+    // let response = await fetch(pokeURL);
+    // pokeData = await response.json();
+    // console.log(pokeData);
+
+    for (let i = 0; i < pokedex.length; i++) {
+        document.getElementById('main-container').innerHTML += /*html*/ `
+            <div id="pokemon">
+                <h1>${pokemon['results'][i]['name'].charAt(0).toUpperCase() + pokemon['results'][i]['name'].slice(1)}</h1>
+            </div>
+        `;
+    }
 }
