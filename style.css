@@ -58,7 +58,7 @@ header img{
     height: 64px;
 }
 /* MAIN STYLE */
-#pokedex{
+.pokedex{
     min-height: 50vh;
     background-color: #77CC55;
     color: white;
@@ -96,16 +96,36 @@ header img{
     flex-wrap: wrap;
     gap: 24px;
     height: fit-content;
-    background-color: #8baa7f;
     padding: 24px;
 }
-#pokemon{
+.pokemon{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: wheat;
+    flex-direction: column;
     height: 250px;
     width: 250px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+.pokemon img{
+    width: 33%;
+    height: 33%;
+    object-fit: contain;
+    position: relative;
+    top: 16px;
+    bottom: 0;
+    right: 0;
+}
+.pokemon:hover img {
+    transform: scale(1.1);
+    transition: all 175ms ease-in-out;
+}
+.headline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
 }
 /* FOOTER STYLE */
 footer{
