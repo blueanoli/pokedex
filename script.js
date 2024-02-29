@@ -7,7 +7,7 @@ const TYPE_COLORS = {
     grass: '#77CC55', electric: '#F5CC34', psychic: '#EE5499', ice: '#66CCFF', dragon: '#7867EE'
 };
 
-function init(){
+function init() {
     loadPokemon();
 }
 
@@ -15,34 +15,22 @@ async function loadPokemon() {
     let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151`;
     let response = await fetch(url);
     pokemon = await response.json();
- 
+
     renderPokedex();
 }
 
 async function renderPokedex() {
     document.getElementById('main-container').innerHTML = '';
-    pokedex = pokemon['results']; 
+    pokedex = pokemon['results'];
 
     for (let i = 0; i < pokedex.length; i++) {
         let pokeURL = pokedex[i].url;
         let response = await fetch(pokeURL);
         let pokeData = await response.json();
-
         let pokemonType = pokeData['types'][0]['type']['name'];
         let bgColor = TYPE_COLORS[pokemonType];
         const id = pokeData['id'];
-
-        document.getElementById('main-container').innerHTML += /*html*/ `
-            <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemon(${pokeData['id']})">
-                <div class="headline">
-                    <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
-                    <h1>${id}</h1>
-                </div>
-                <div class="types">
-                    <p>Type: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}</p>
-                </div>
-                <img src="${pokeData['sprites']['other']['dream_world']['front_default']}" alt="${pokeData.name}">
-            </div>`;
+        renderPokedexHTML(pokemonType, bgColor, id, pokeData);
     }
 }
 
@@ -50,17 +38,18 @@ async function showPokemon(id) {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     let response = await fetch(url);
     let pokeData = await response.json();
-    
+
     renderPokeCard(pokeData);
 }
 
-function hidePokeCard(){
+function hidePokeCard() {
     document.getElementById('pokedex').innerHTML = '';
 }
- 
+
+
 // RENDER HTML -----------------------------------------------------------------------------------------------------------
 
-function renderPokeCard(pokeData){
+function renderPokeCard(pokeData) {
     const id = pokeData['id'];
 
     document.getElementById('pokedex').innerHTML = '';
@@ -96,4 +85,20 @@ function renderPokeCard(pokeData){
         </div>
     </div>
     `;
+}
+
+function renderPokedexHTML(pokemonType, bgColor, id, pokeData) {
+
+
+    document.getElementById('main-container').innerHTML += /*html*/ `
+        <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemon(${pokeData['id']})">
+            <div class="headline">
+                <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
+                <h1>${id}</h1>
+            </div>
+            <div class="types">
+                <p>Type: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}</p>
+            </div>
+            <img src="${pokeData['sprites']['other']['dream_world']['front_default']}" alt="${pokeData.name}">
+        </div>`;
 }
