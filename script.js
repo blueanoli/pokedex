@@ -57,8 +57,7 @@ async function showPokemon(id) {
 function hidePokeCard(){
     document.getElementById('pokedex').innerHTML = '';
 }
-
-
+ 
 // RENDER HTML -----------------------------------------------------------------------------------------------------------
 
 function renderPokeCard(pokeData){
@@ -81,7 +80,7 @@ function renderPokeCard(pokeData){
             </div>
             <img id="pokemon-image" src="${pokeData['sprites']['other']['dream_world']['front_default']}" alt="${pokeData.name}">
         </div>
-        <div class="info-container">
+        <div onclick="hidePokeCard()" class="info-container">
             <nav>
                 <h2 onclick>About</h2>
                 <h2 onclick>Base Stats</h2>
@@ -98,4 +97,3 @@ function renderPokeCard(pokeData){
     </div>
     `;
 }
-
