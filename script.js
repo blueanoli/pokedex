@@ -1,5 +1,6 @@
 let pokemon;
 let pokedex = [];
+let limit = Math.min(20, 151 - pokedex.length);
 
 const TYPE_COLORS = {
     normal: '#AAAA99', fighting: '#BB5545', flying: '#8899FF', poison: '#AA5599', ground: '#DDBB55',
@@ -12,11 +13,32 @@ function init() {
 }
 
 async function loadPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151`;
+    let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${limit}`;
     let response = await fetch(url);
     pokemon = await response.json();
 
     renderPokedex();
+}
+
+
+async function loadMore() {
+    let url = `https://pokeapi.co/api/v2/pokemon/?offset=${pokedex.length}&limit=${limit}`;
+    let response = await fetch(url);
+    let morePokemon = await response.json();
+    pokedex = pokedex.concat(morePokemon['results']);
+
+    for (let i = 0; i < morePokemon['results'].length; i++) {
+        let pokeURL = morePokemon['results'][i].url;
+        let response = await fetch(pokeURL);
+        let pokeData = await response.json();
+        let pokemonType = pokeData['types'][0]['type']['name'];
+        let bgColor = TYPE_COLORS[pokemonType];
+        const id = pokeData['id'];
+        renderPokedexHTML(pokemonType, bgColor, id, pokeData);
+    }
+    if (pokedex.length >= 151) {
+        document.getElementById('load-more').style.display = 'none';
+    }
 }
 
 async function renderPokedex() {

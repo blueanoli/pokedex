@@ -50,6 +50,9 @@ button{
     margin: 8px 0;
     cursor: pointer;
 }
+button:hover{
+    background-color: #af0000;
+}
 /* HEADER STYLE */
 header{
     background-color: white;
@@ -174,13 +177,17 @@ header img{
 /* LOAD BUTTON AREA */
 .load{
     position: fixed;
-    bottom: 44px;
+    bottom: 70px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+#load-more{
+    font-weight: 700;
+    width: 200px;
 }
 /* FOOTER STYLE */
 footer{
