@@ -88,8 +88,6 @@ function renderPokeCard(pokeData) {
 }
 
 function renderPokedexHTML(pokemonType, bgColor, id, pokeData) {
-
-
     document.getElementById('main-container').innerHTML += /*html*/ `
         <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemon(${pokeData['id']})">
             <div class="headline">
