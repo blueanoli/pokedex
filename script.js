@@ -62,6 +62,7 @@ async function showPokemonCard(id) {
     let pokeData = await response.json();
 
     renderPokeCard(pokeData);
+    renderChart(pokeData);
 }
 
 function hidePokeCard() {
@@ -94,16 +95,12 @@ function renderPokeCard(pokeData) {
         </div>
         <div onclick="hidePokeCard()" class="info-container">
             <nav>
-                <h2 onclick>About</h2>
-                <h2 onclick>Base Stats</h2>
+                <h2>Base Stats</h2>
             </nav>
             <div class="base-stats">
-                <p>HP: ${pokeData['stats'][0]['base_stat']}</p>
-                <p>Attack: ${pokeData['stats'][1]['base_stat']}</p>
-                <p>Defense: ${pokeData['stats'][2]['base_stat']}</p>
-                <p>Special Attack: ${pokeData['stats'][3]['base_stat']}</p>
-                <p>Special Defense: ${pokeData['stats'][4]['base_stat']}</p>
-                <p>Speed: ${pokeData['stats'][5]['base_stat']}</p>
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>

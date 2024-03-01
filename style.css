@@ -131,6 +131,11 @@ header img{
     bottom: 40%;
     right: 25%;
 }
+/* CHART CONTAINER */
+#myChart{
+    height: 50%;
+    width: 50%;
+}
 /* POKEDEX CONTAINER */
 #main-container{
     display: flex;
@@ -175,7 +180,6 @@ header img{
     flex-wrap: nowrap;
     width: 90%;
 }
-
 .types{
     display: flex;
     justify-content: flex-start;
