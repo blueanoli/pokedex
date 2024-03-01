@@ -99,14 +99,19 @@ header img{
     min-height: 50vh;
     color: white;
     display: flex;
+    flex-direction: column;
     padding: 24px;
     width: 50%;
 }
-.pokemon-id{
-    width: 100%;
+.card-headline{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
+    width: 100%;
+}
+.card-types{
+    width: 100%;
+    margin-top: 16px;
 }
 .info-container{
     background-color: white;

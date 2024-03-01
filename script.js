@@ -60,10 +60,13 @@ async function showPokemonCard(id) {
     let response = await fetch(url);
     let pokeData = await response.json();
 
+    document.body.style.overflow = 'hidden';
+
     renderPokeCard(pokeData);
     renderChart(pokeData);
 }
 
 function hidePokeCard() {
     document.getElementById('pokedex').innerHTML = '';
+    document.body.style.overflow = 'auto';
 }

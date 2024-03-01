@@ -11,11 +11,13 @@ function renderPokeCard(pokeData) {
             <img onclick="showNextPokemon()" id="next" src="./img/next.png" alt="NEXT">
         </div>
         <div onclick="hidePokeCard()" class="pokedex" style="background-color: ${TYPE_COLORS[pokeData['types'][0]['type']['name']]};">
-            <div id="pokemon-name">
+            <div id="pokemon-name" class="card-headline">
                 <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
-                <h1>${id}</h1>
+                <div class="card-headline-id">
+                <h2>${id}</h2>
+                </div>
             </div>
-            <div class="types types-card">
+            <div class="types card-types">
                 <p>Type 1: ${pokeData['types'][0]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][0]['type']['name'].slice(1)}</p>
                 <p>Type 2: ${pokeData['types'][1] ? pokeData['types'][1]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][1]['type']['name'].slice(1) : 'None'}</p>
             </div>
