@@ -98,7 +98,7 @@ header img{
   .navigation-btn img{
     cursor: pointer;
   }
-/* MAIN STYLE */
+/* POKECARD CONTAINER */
 .pokedex{
     min-height: 50vh;
     color: white;
@@ -135,7 +135,7 @@ header img{
     bottom: 40%;
     right: 25%;
 }
-/* MAIN CONTAINER */
+/* POKEDEX CONTAINER */
 #main-container{
     display: flex;
     align-items: center;
@@ -206,6 +206,14 @@ header img{
 #load-more{
     font-weight: 700;
     width: 200px;
+}
+/* BACK TO TOP SECTION */
+.back-to-top{
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+    width: 50px;
+    cursor: pointer;
 }
 /* FOOTER STYLE */
 footer{
