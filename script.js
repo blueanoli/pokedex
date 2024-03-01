@@ -115,7 +115,9 @@ function renderPokedexHTML(pokemonType, bgColor, id, pokeData) {
         <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemonCard(${pokeData['id']})">
             <div class="headline">
                 <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
-                <h1>${id}</h1>
+                <div class="headline-id">
+                    <h3>${id}</h3>
+                </div>
             </div>
             <div class="types">
                 <p>Type 1: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}</p>
