@@ -102,6 +102,8 @@ header img{
     flex-direction: column;
     padding: 24px;
     width: 50%;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
 }
 .card-headline{
     display: flex;
@@ -115,8 +117,7 @@ header img{
 }
 .info-container{
     background-color: white;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    border-radius: 40px;
     height: fit-content;
     margin-top: -50px;
     width: 50%;

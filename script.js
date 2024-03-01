@@ -70,3 +70,8 @@ function hidePokeCard() {
     document.getElementById('pokedex').innerHTML = '';
     document.body.style.overflow = 'auto';
 }
+
+function searchPokemon(){
+    let search = document.getElementById('search').value;
+    
+}
