@@ -132,9 +132,15 @@ header img{
     right: 25%;
 }
 /* CHART CONTAINER */
-#myChart{
-    height: 50%;
-    width: 50%;
+.base-stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.myChart{
+    width: 75%;
 }
 /* POKEDEX CONTAINER */
 #main-container{
