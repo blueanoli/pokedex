@@ -1,5 +1,7 @@
 let pokemon;
 let pokedex = [];
+let allPokemon = [];
+let displayedPokemon = 20;
 let limit = Math.min(20, 151 - pokedex.length);
 
 const TYPE_COLORS = {
@@ -8,50 +10,40 @@ const TYPE_COLORS = {
     grass: '#77CC55', electric: '#F5CC34', psychic: '#EE5499', ice: '#66CCFF', dragon: '#7867EE'
 };
 
-function init() {
-    loadPokemon();
+async function init() {
+    await loadAllPokemon();
+    renderInitialPokedex();
 }
 
-async function loadPokemon() {
-    let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${limit}`;
-    let response = await fetch(url);
-    pokemon = await response.json();
-
-    renderPokedex();
-}
-
-async function loadMore() {
-    let url = `https://pokeapi.co/api/v2/pokemon/?offset=${pokedex.length}&limit=${limit}`;
-    let response = await fetch(url);
-    let morePokemon = await response.json();
-    pokedex = pokedex.concat(morePokemon['results']);
-
-    for (let i = 0; i < morePokemon['results'].length; i++) {
-        let pokeURL = morePokemon['results'][i].url;
-        let response = await fetch(pokeURL);
+async function loadAllPokemon() {
+    for (let i = 1; i <= 151; i++) { 
+        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+        let response = await fetch(url);
         let pokeData = await response.json();
-        let pokemonType = pokeData['types'][0]['type']['name'];
-        let bgColor = TYPE_COLORS[pokemonType];
-        const id = pokeData['id'];
-        renderPokedexHTML(pokemonType, bgColor, id, pokeData);
-    }
-    if (pokedex.length >= 151) {
-        document.getElementById('load-more').style.display = 'none';
+        allPokemon.push(pokeData); 
     }
 }
 
-async function renderPokedex() {
-    document.getElementById('main-container').innerHTML = '';
-    pokedex = pokemon['results'];
-
-    for (let i = 0; i < pokedex.length; i++) {
-        let pokeURL = pokedex[i].url;
-        let response = await fetch(pokeURL);
-        let pokeData = await response.json();
+function loadMorePokemon() {
+    let newLimit = Math.min(displayedPokemon + 20, 151); 
+    for (let i = displayedPokemon; i < newLimit; i++) {
+        let pokeData = allPokemon[i];
         let pokemonType = pokeData['types'][0]['type']['name'];
         let bgColor = TYPE_COLORS[pokemonType];
-        const id = pokeData['id'];
-        renderPokedexHTML(pokemonType, bgColor, id, pokeData);
+        renderPokedexHTML(pokemonType, bgColor, i+1, pokeData);
+    }
+    displayedPokemon = newLimit; 
+    if (displayedPokemon >= 151) {
+        document.getElementById('load-more').style.display = 'none'; 
+    }
+}
+
+function renderInitialPokedex() {
+    for (let i = 0; i < displayedPokemon; i++) { 
+        let pokeData = allPokemon[i];
+        let pokemonType = pokeData['types'][0]['type']['name'];
+        let bgColor = TYPE_COLORS[pokemonType];
+        renderPokedexHTML(pokemonType, bgColor, i+1, pokeData);
     }
 }
 
@@ -69,9 +61,4 @@ async function showPokemonCard(id) {
 function hidePokeCard() {
     document.getElementById('pokedex').innerHTML = '';
     document.body.style.overflow = 'auto';
-}
-
-function searchPokemon(){ //TO DO!!!
-    let search = document.getElementById('search').value;
-    
 }
