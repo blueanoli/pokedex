@@ -57,3 +57,17 @@ function hidePokeCard() {
     document.getElementById('pokedex').innerHTML = '';
     document.body.style.overflow = 'auto';
 }
+
+function showNextPokemon(){
+    let id = parseInt(document.getElementById('pokemon-name').getElementsByTagName('h2')[0].innerHTML);
+    if (id < 151) {
+        showPokemonCard(id+1);
+    }
+}
+
+function showPreviousPokemon(){
+    let id = parseInt(document.getElementById('pokemon-name').getElementsByTagName('h2')[0].innerHTML);
+    if (id > 1) {
+        showPokemonCard(id-1);
+    }
+}
