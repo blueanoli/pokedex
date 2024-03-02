@@ -2,7 +2,6 @@ let pokemon;
 let pokedex = [];
 let allPokemon = [];
 let displayedPokemon = 20;
-let limit = Math.min(20, 151 - pokedex.length);
 
 const TYPE_COLORS = {
     normal: '#AAAA99', fighting: '#BB5545', flying: '#8899FF', poison: '#AA5599', ground: '#DDBB55',
@@ -58,16 +57,18 @@ function hidePokeCard() {
     document.body.style.overflow = 'auto';
 }
 
-function showNextPokemon(){
-    let id = parseInt(document.getElementById('pokemon-name').getElementsByTagName('h2')[0].innerHTML);
-    if (id < 151) {
-        showPokemonCard(id+1);
+function showNextPokemon() {
+    let currentPokemonId = document.getElementById('pokemon-id').innerText;
+    if (currentPokemonId < 151) {
+        currentPokemonId ++;
+        showPokemonCard(currentPokemonId);
     }
 }
 
-function showPreviousPokemon(){
-    let id = parseInt(document.getElementById('pokemon-name').getElementsByTagName('h2')[0].innerHTML);
-    if (id > 1) {
-        showPokemonCard(id-1);
+function showPreviousPokemon() {
+    let currentPokemonId = document.getElementById('pokemon-id').innerText;
+    if (currentPokemonId > 1) {
+        currentPokemonId --;
+        showPokemonCard(currentPokemonId);
     }
 }

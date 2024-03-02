@@ -14,7 +14,7 @@ function renderPokeCard(pokeData) {
             <div id="pokemon-name" class="card-headline">
                 <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
                 <div class="card-headline-id">
-                <h2>${id}</h2>
+                <h2 id="pokemon-id">${id}</h2>
                 </div>
             </div>
             <div class="types card-types">
