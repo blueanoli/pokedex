@@ -104,6 +104,7 @@ header img{
     width: 50%;
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
+    cursor: pointer;
 }
 .card-headline{
     display: flex;
@@ -122,6 +123,7 @@ header img{
     margin-top: -50px;
     width: 50%;
     padding: 24px;
+    cursor: pointer;
 }
 .image-container{
     width: 100%;
@@ -133,9 +135,7 @@ header img{
     height: 350px;
     z-index: 1;
     object-fit: contain;
-    position: fixed;
-    bottom: 40%;
-    right: 25%;
+    margin-left: auto;
 }
 /* CHART CONTAINER */
 .base-stats{
@@ -147,6 +147,8 @@ header img{
 }
 .myChart{
     width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* POKEDEX CONTAINER */
 #main-container{

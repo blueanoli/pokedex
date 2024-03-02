@@ -1,4 +1,3 @@
-let pokemon;
 let pokedex = [];
 let allPokemon = [];
 let displayedPokemon = 20;
@@ -73,3 +72,5 @@ function showPreviousPokemon() {
         showPokemonCard(currentPokemonId);
     }
 }
+
+// SEARCH FUNCTION TO DO!!!
