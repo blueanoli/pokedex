@@ -19,7 +19,7 @@ function renderPokeCard(pokeData) {
             </div>
             <div class="types card-types">
                 <p>Type 1: ${pokeData['types'][0]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][0]['type']['name'].slice(1)}</p>
-                <p>Type 2: ${pokeData['types'][1] ? pokeData['types'][1]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][1]['type']['name'].slice(1) : 'None'}</p>
+                <p>Type 2: ${pokeData['types'][1] ? pokeData['types'][1]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][1]['type']['name'].slice(1) : '---'}</p>
             </div>
             <img id="pokemon-image" src="${pokeData['sprites']['other']['dream_world']['front_default']}" alt="${pokeData.name}">
         </div>
@@ -38,7 +38,8 @@ function renderPokeCard(pokeData) {
 }
 
 function renderPokedexHTML(pokemonType, bgColor, id, pokeData) {
-    document.getElementById('main-container').innerHTML += /*html*/ `
+    let mainContainer = document.getElementById('main-container');
+    mainContainer.innerHTML += /*html*/ `
         <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemonCard(${pokeData['id']})">
             <div class="headline">
                 <h1>${pokeData['name'].charAt(0).toUpperCase() + pokeData['name'].slice(1)}</h1>
@@ -48,7 +49,7 @@ function renderPokedexHTML(pokemonType, bgColor, id, pokeData) {
             </div>
             <div class="types">
                 <p>Type 1: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}</p>
-                <p>Type 2: ${pokeData['types'][1] ? pokeData['types'][1]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][1]['type']['name'].slice(1) : 'None'}</p>
+                <p>Type 2: ${pokeData['types'][1] ? pokeData['types'][1]['type']['name'].charAt(0).toUpperCase() + pokeData['types'][1]['type']['name'].slice(1) : '---'}</p>
             </div>
             <img src="${pokeData['sprites']['other']['dream_world']['front_default']}" alt="${pokeData.name}">
         </div>`;

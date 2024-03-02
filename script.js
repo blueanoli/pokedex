@@ -71,7 +71,7 @@ function hidePokeCard() {
     document.body.style.overflow = 'auto';
 }
 
-function searchPokemon(){
+function searchPokemon(){ //TO DO!!!
     let search = document.getElementById('search').value;
     
 }
