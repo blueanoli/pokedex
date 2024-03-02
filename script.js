@@ -48,14 +48,9 @@ function renderInitialPokedex() {
 }
 
 async function showPokemonCard(id) {
-    let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    let response = await fetch(url);
-    let pokeData = await response.json();
-
     document.body.style.overflow = 'hidden';
-
-    renderPokeCard(pokeData);
-    renderChart(pokeData);
+    renderPokeCard(allPokemon[id-1]);
+    renderChart(allPokemon[id-1]);
 }
 
 function hidePokeCard() {
