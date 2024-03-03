@@ -157,7 +157,7 @@ header img{
     justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
-    height: fit-content;
+    min-height: fit-content;
     padding: 24px;
 }
 .pokemon{
@@ -226,10 +226,12 @@ header img{
 }
 /* BACK TO TOP SECTION */
 .back-to-top{
-    position: fixed;
-    bottom: 60px;
-    right: 50px;
-    width: 50px;
+    width: 100%;
+    position: sticky;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    bottom: 64px;
     cursor: pointer;
 }
 /* FOOTER STYLE */
