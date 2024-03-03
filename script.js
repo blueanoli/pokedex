@@ -73,4 +73,14 @@ function showPreviousPokemon() {
     }
 }
 
-// SEARCH FUNCTION TO DO!!!
+function filterPokemon() {
+    let search = document.getElementById('search').value.toLowerCase();
+    document.getElementById('main-container').innerHTML = ''; 
+    
+    for (let i = 0; i < allPokemon.length; i++) {
+        if (allPokemon[i]['name'].toLowerCase().includes(search)) {
+            console.log(search);
+            renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i+1, allPokemon[i]);
+        }
+    }
+}
