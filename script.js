@@ -75,12 +75,19 @@ function showPreviousPokemon() {
 
 function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
-    document.getElementById('main-container').innerHTML = ''; 
-    
-    for (let i = 0; i < allPokemon.length; i++) {
-        if (allPokemon[i]['name'].toLowerCase().includes(search)) {
-            console.log(search);
-            renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i+1, allPokemon[i]);
+
+    if (search.length >= 3) {
+        document.getElementById('main-container').innerHTML = ''; 
+        document.getElementById('load-more').style.display = 'none';
+        
+        for (let i = 0; i < allPokemon.length; i++) {
+            if (allPokemon[i]['name'].toLowerCase().includes(search)) {
+                renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i+1, allPokemon[i]);
+            }
         }
+    } if (search.length === 0) {
+        document.getElementById('main-container').innerHTML = '';
+        renderInitialPokedex();
+        document.getElementById('load-more').style.display = 'block';
     }
 }
