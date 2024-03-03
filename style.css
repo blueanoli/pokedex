@@ -67,6 +67,17 @@ header img{
     width: 64px;
     height: 64px;
 }
+/* LOADING SCREEN STYLE */
+#loading-screen{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#loading-screen img{
+    width: 250px;
+    height: 250px;
+}
 /* WRAPPER STYLE */
 .pokedex-wrapper {
     display: flex;

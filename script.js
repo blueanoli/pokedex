@@ -1,6 +1,7 @@
 let pokedex = [];
 let allPokemon = [];
 let displayedPokemon = 20;
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
 const TYPE_COLORS = {
     normal: '#AAAA99', fighting: '#BB5545', flying: '#8899FF', poison: '#AA5599', ground: '#DDBB55',
@@ -10,13 +11,15 @@ const TYPE_COLORS = {
 };
 
 async function init() {
+    showLoadingScreen();
     await loadAllPokemon();
     renderInitialPokedex();
+    hideLoadingScreen();
 }
 
 async function loadAllPokemon() {
     for (let i = 1; i <= 151; i++) { 
-        let url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
+        const url = `${BASE_URL}${i}/`;
         let response = await fetch(url);
         let pokeData = await response.json();
         allPokemon.push(pokeData); 
@@ -90,4 +93,12 @@ function filterPokemon() {
         renderInitialPokedex();
         document.getElementById('load-more').style.display = 'block';
     }
+}
+
+function showLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'flex';
+}
+
+function hideLoadingScreen() {
+    document.getElementById('loading-screen').style.display = 'none';
 }
