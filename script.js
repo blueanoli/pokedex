@@ -13,8 +13,10 @@ const TYPE_COLORS = {
 async function init() {
     showLoadingScreen();
     await loadAllPokemon();
-    renderInitialPokedex();
-    hideLoadingScreen();
+    setTimeout(() => {
+        hideLoadingScreen();
+        renderInitialPokedex();
+    }, 3000);
 }
 
 async function loadAllPokemon() {
@@ -96,9 +98,11 @@ function filterPokemon() {
 }
 
 function showLoadingScreen() {
+    document.getElementById('load-more').style.display = 'none';
     document.getElementById('loading-screen').style.display = 'flex';
 }
 
 function hideLoadingScreen() {
     document.getElementById('loading-screen').style.display = 'none';
+    document.getElementById('load-more').style.display = 'block';
 }
