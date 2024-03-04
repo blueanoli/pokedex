@@ -123,6 +123,9 @@ header img{
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
     cursor: pointer;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    position: relative;
 }
 .card-headline{
     display: flex;
@@ -146,14 +149,16 @@ header img{
 .image-container{
     width: 100%;
     display: flex;
-    justify-content: center;
-}
-#pokemon-image{
-    width: 350px;
-    height: 350px;
+    justify-content: flex-end;
     z-index: 1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.image-container img{
+    width: 200px;
+    height: 200px;
     object-fit: contain;
-    margin-left: auto;
 }
 /* CHART CONTAINER */
 .base-stats{

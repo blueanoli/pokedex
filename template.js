@@ -19,7 +19,9 @@ function renderPokeCard(allPokemon) {
                 <p>Type 1: ${allPokemon['types'][0]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][0]['type']['name'].slice(1)}</p>
                 <p>Type 2: ${allPokemon['types'][1] ? allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1) : '---'}</p>
             </div>
-            <img id="pokemon-image" src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
+            <div class="image-container">
+                <img id="pokemon-image" src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
+            </div>
         </div>
         <div onclick="hidePokeCard()" class="info-container">
             <nav>
