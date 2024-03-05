@@ -32,6 +32,8 @@ function renderChart(pokeData) {
             }]
         },
         options: {
+            responsive: true,
+            //maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -40,3 +42,16 @@ function renderChart(pokeData) {
         }
     });
 }
+
+/* function beforePrintHandler () {
+    for (let id in Chart.instances) {
+        Chart.instances[id].resize();
+    }
+}
+
+window.addEventListener('beforeprint', () => {
+    myChart.resize(600, 600);
+  });
+  window.addEventListener('afterprint', () => {
+    myChart.resize();
+  }); */
