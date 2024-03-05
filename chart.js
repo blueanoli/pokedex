@@ -1,5 +1,6 @@
 function renderChart(pokeData) {
     const ctx = document.getElementById('myChart');
+    document.getElementById('myChart').style.display = 'unset';
     let stats = [
         pokeData['stats'][0]['base_stat'],
         pokeData['stats'][1]['base_stat'],
@@ -33,7 +34,6 @@ function renderChart(pokeData) {
         },
         options: {
             responsive: true,
-            //maintainAspectRatio: false,
             scales: {
                 y: {
                     beginAtZero: true
@@ -42,16 +42,3 @@ function renderChart(pokeData) {
         }
     });
 }
-
-/* function beforePrintHandler () {
-    for (let id in Chart.instances) {
-        Chart.instances[id].resize();
-    }
-}
-
-window.addEventListener('beforeprint', () => {
-    myChart.resize(600, 600);
-  });
-  window.addEventListener('afterprint', () => {
-    myChart.resize();
-  }); */
