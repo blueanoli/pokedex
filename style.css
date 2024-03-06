@@ -155,6 +155,7 @@ header img{
     cursor: pointer;
     margin-top: -50px; 
     margin-bottom: 100px;
+    z-index: 1;
 }
 nav h2{
     margin: 24px 0;
@@ -163,7 +164,7 @@ nav h2{
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    z-index: 1;
+    z-index: 2;
     position: absolute;
     bottom: 0;
     right: 16px;
@@ -232,6 +233,7 @@ nav h2{
     align-items: center;
     flex-wrap: nowrap;
     width: 90%;
+    padding-bottom: 16px;
 }
 .types{
     display: flex;

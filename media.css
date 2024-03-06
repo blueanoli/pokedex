@@ -22,7 +22,7 @@
 }
 @media (max-width: 600px) { 
     .pokedex, .info-container {
-        max-width: 50%; 
+        max-width: 60%; 
     }
     .image-container img{
         width: 200px;
@@ -30,13 +30,13 @@
 }
 @media (max-width: 450px) { 
     .pokedex, .info-container {
-        max-width: 60%; 
+        max-width: 85%; 
     }
     .image-container img{
         width: 180px;
     }
     .navigation-btn{
-        gap: 15px;
+        gap: 200px;
         bottom: 110px;
     }
     p{
@@ -48,5 +48,8 @@
     }
     #main-container{
         padding: 44px;
+    }
+    #myChart{
+        margin-top: 50px;
     }
 }
