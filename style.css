@@ -38,6 +38,10 @@ input:focus::placeholder{
     font-size: 12px;
     color: #FE0000;
     background-color: white;
+    transition: all 175ms ease-in-out;
+}
+input:focus{
+    border: 2px solid #FE0000;
 }
 button{
     background-color: #FE0000;
@@ -187,6 +191,7 @@ nav h2{
 /* POKEDEX CONTAINER */
 #main-container{
     display: flex;
+    flex: 1;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
