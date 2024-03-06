@@ -114,17 +114,19 @@ header img{
   }
 /* POKECARD CONTAINER */
 .pokedex{
-    height: 80vh;
-    max-height: 600px;
+    flex: 1;
     color: white;
     display: flex;
     flex-direction: column;
     padding: 24px;
-    width: 50%;
+    width: 90%;
+    max-width: 35%; 
+    height: 75%;
+    max-height: 35%;
     border-top-right-radius: 40px;
     border-top-left-radius: 40px;
     cursor: pointer;
-    margin: 50px auto 0 auto;
+    margin-top: 100px;
     position: relative;
 }
 .card-headline{
@@ -138,14 +140,17 @@ header img{
     margin-top: 16px;
 }
 .info-container{
+    flex: 1;
     background-color: white;
     border-radius: 40px;
-    height: fit-content;
-    margin-top: -50px;
-    width: 50%;
+    width: 90%; 
+    max-width: 35%; 
+    height: 75%;
+    min-height: fit-content;
     padding: 24px;
     cursor: pointer;
-    margin-bottom: 50px;
+    margin-top: -50px; 
+    margin-bottom: 100px;
 }
 nav h2{
     margin: 24px 0;
@@ -178,6 +183,7 @@ nav h2{
     margin-left: auto;
     margin-right: auto;
 }
+
 /* POKEDEX CONTAINER */
 #main-container{
     display: flex;

@@ -12,3 +12,13 @@
         font-size: 1.5em;
     }
 }
+@media (max-width: 940px){
+    .pokedex, .info-container{
+        max-width: 45%;
+    }
+}
+@media (max-width: 600px) { 
+    .pokedex, .info-container {
+        max-width: 50%; 
+    }
+}
