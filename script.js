@@ -17,7 +17,7 @@ async function init() {
         hideLoadingScreen();
         renderInitialPokedex();
         loadRemainingPokemon();
-    }, 1000);
+    }, 500);
 }
 
 async function loadInitialPokemon() {

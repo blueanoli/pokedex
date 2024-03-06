@@ -186,7 +186,7 @@ nav h2{
     flex-wrap: wrap;
     gap: 24px;
     min-height: fit-content;
-    padding: 24px;
+    padding: 64px;
 }
 .pokemon{
     display: flex;
@@ -212,7 +212,7 @@ nav h2{
     right: -45px;
 }
 .pokemon:hover img {
-    transform: scale(1.5);
+    transform: scale(1.1);
     transition: all 175ms ease-in-out;
 }
 .headline{
