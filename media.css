@@ -16,9 +16,37 @@
     .pokedex, .info-container{
         max-width: 45%;
     }
+    .image-container img{
+        width: 220px;
+    }
 }
 @media (max-width: 600px) { 
     .pokedex, .info-container {
         max-width: 50%; 
+    }
+    .image-container img{
+        width: 200px;
+    }
+}
+@media (max-width: 450px) { 
+    .pokedex, .info-container {
+        max-width: 60%; 
+    }
+    .image-container img{
+        width: 180px;
+    }
+    .navigation-btn{
+        gap: 15px;
+        bottom: 110px;
+    }
+    p{
+        font-size: 12px;
+    }
+    .back-to-top img{
+        width: 44px;
+        height: 44px;
+    }
+    #main-container{
+        padding: 44px;
     }
 }
