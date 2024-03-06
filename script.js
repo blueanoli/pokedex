@@ -48,7 +48,7 @@ function loadMorePokemon() {
     }
     displayedPokemon = newLimit;
     if (displayedPokemon >= 250) {
-        document.getElementById('load-more').style.display = 'none';
+        hideLoadMoreButton();
     }
 }
 
@@ -92,8 +92,8 @@ function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
 
     if (search.length >= 3) {
-        document.getElementById('main-container').innerHTML = '';
-        document.getElementById('load-more').style.display = 'none';
+        clearMainContainer();
+        hideLoadMoreButton();
 
         for (let i = 0; i < allPokemon.length; i++) {
             if (allPokemon[i]['name'].toLowerCase().includes(search)) {
@@ -101,18 +101,27 @@ function filterPokemon() {
             }
         }
     } if (search.length === 0) {
-        document.getElementById('main-container').innerHTML = '';
+        clearMainContainer();
         renderInitialPokedex();
         document.getElementById('load-more').style.display = 'block';
     }
 }
 
 function showLoadingScreen() {
-    document.getElementById('load-more').style.display = 'none';
+    hideLoadMoreButton();
     document.getElementById('loading-screen').style.display = 'flex';
 }
 
 function hideLoadingScreen() {
     document.getElementById('loading-screen').style.display = 'none';
     document.getElementById('load-more').style.display = 'block';
+}
+
+// HILFSFUNCTIONS
+function clearMainContainer() {
+    document.getElementById('main-container').innerHTML = '';
+}
+
+function hideLoadMoreButton() {
+    document.getElementById('load-more').style.display = 'none';
 }
