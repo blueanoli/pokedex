@@ -107,6 +107,7 @@ function filterPokemon() {
     }
 }
 
+// HILFSFUNKTIONEN -----------------------------------------------------------
 function showLoadingScreen() {
     hideLoadMoreButton();
     document.getElementById('loading-screen').style.display = 'flex';
@@ -117,7 +118,6 @@ function hideLoadingScreen() {
     document.getElementById('load-more').style.display = 'block';
 }
 
-// HILFSFUNCTIONS
 function clearMainContainer() {
     document.getElementById('main-container').innerHTML = '';
 }
