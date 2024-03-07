@@ -61,7 +61,7 @@ function renderInitialPokedex() {
     }
 }
 
-async function showPokemonCard(id) {
+function showPokemonCard(id) {
     document.body.style.overflow = 'hidden';
     renderPokeCard(allPokemon[id - 1]);
     renderChart(allPokemon[id - 1]);
@@ -92,19 +92,27 @@ function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
 
     if (search.length >= 3) {
-        clearMainContainer();
-        hideLoadMoreButton();
-
-        for (let i = 0; i < allPokemon.length; i++) {
-            if (allPokemon[i]['name'].toLowerCase().includes(search)) {
-                renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i + 1, allPokemon[i]);
-            }
-        }
-    } if (search.length === 0) {
-        clearMainContainer();
-        renderInitialPokedex();
-        document.getElementById('load-more').style.display = 'block';
+        filterPokemonBySearch(search);
+    } else if (search.length === 0) {
+        resetPokedexView();
     }
+}
+
+function filterPokemonBySearch(search) {
+    clearMainContainer();
+    hideLoadMoreButton();
+
+    for (let i = 0; i < allPokemon.length; i++) {
+        if (allPokemon[i]['name'].toLowerCase().includes(search)) {
+            renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i + 1, allPokemon[i]);
+        }
+    }
+}
+
+function resetPokedexView() {
+    clearMainContainer();
+    renderInitialPokedex();
+    document.getElementById('load-more').style.display = 'block';
 }
 
 // HILFSFUNKTIONEN -----------------------------------------------------------
