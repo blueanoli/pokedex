@@ -27,13 +27,19 @@
     .image-container img{
         width: 200px;
     }
+    .navigation-btn{
+        gap: 320px;
+    }
 }
 @media (max-width: 450px) { 
     .pokedex, .info-container {
         max-width: 85%; 
     }
+    .pokedex{
+        margin-top: 60px;
+    }
     .image-container img{
-        width: 180px;
+        width: 150px;
     }
     .navigation-btn{
         gap: 200px;

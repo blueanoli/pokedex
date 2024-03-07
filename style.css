@@ -109,7 +109,7 @@ header img{
     align-items: center;
     justify-content: space-around;
     z-index: 1000;
-    gap: 320px;
+    gap: 200px;
     position: fixed;
   }
   .navigation-btn img{
