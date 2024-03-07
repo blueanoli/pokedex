@@ -65,6 +65,7 @@ function showPokemonCard(id) {
     document.body.style.overflow = 'hidden';
     renderPokeCard(allPokemon[id - 1]);
     renderChart(allPokemon[id - 1]);
+    adjustNavigationArrows(id);
 }
 
 function hidePokeCard() {
@@ -72,22 +73,38 @@ function hidePokeCard() {
     document.body.style.overflow = 'auto';
 }
 
+function adjustNavigationArrows(currentPokemonId) {
+    const maxPokemonId = 250; 
+
+    if (currentPokemonId <= 1) {
+        hidePreviousArrow();
+    } else {
+       showPreviousArrow();
+    }
+    if (currentPokemonId >= maxPokemonId) {
+        hideNextArrow();
+    } else {
+       showNextArrow();
+    }
+}
+
 function showNextPokemon() {
-    let currentPokemonId = document.getElementById('pokemon-id').innerText;
+    let currentPokemonId = parseInt(document.getElementById('pokemon-id').innerText);
     if (currentPokemonId < 250) {
         currentPokemonId++;
         showPokemonCard(currentPokemonId);
     }
+    adjustNavigationArrows(currentPokemonId);
 }
 
 function showPreviousPokemon() {
-    let currentPokemonId = document.getElementById('pokemon-id').innerText;
+    let currentPokemonId = parseInt(document.getElementById('pokemon-id').innerText);
     if (currentPokemonId > 1) {
         currentPokemonId--;
         showPokemonCard(currentPokemonId);
     }
+    adjustNavigationArrows(currentPokemonId);
 }
-
 function filterPokemon() {
     let search = document.getElementById('search').value.toLowerCase();
 
@@ -132,4 +149,24 @@ function clearMainContainer() {
 
 function hideLoadMoreButton() {
     document.getElementById('load-more').style.display = 'none';
+}
+
+function showNextArrow() {
+    document.getElementById('next').style.opacity = '1';
+    document.getElementById('next').style.cursor = 'pointer';
+}
+
+function showPreviousArrow() {
+    document.getElementById('previous').style.opacity = '1';
+    document.getElementById('previous').style.cursor = 'pointer';
+}
+
+function hideNextArrow() {
+    document.getElementById('next').style.opacity = '0';
+    document.getElementById('next').style.cursor = 'default';
+}
+
+function hidePreviousArrow() {
+    document.getElementById('previous').style.opacity = '0';
+    document.getElementById('previous').style.cursor = 'default';
 }

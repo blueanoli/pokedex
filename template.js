@@ -1,6 +1,7 @@
 // RENDER HTML -----------------------------------------------------------------------------------------------------------
 function renderPokeCard(allPokemon) {
     let id = allPokemon['id'];
+    let type2Html = allPokemon['types'][1] ? `<p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}</p>` : '';
     document.getElementById('pokedex').innerHTML = '';
     document.getElementById('pokedex').innerHTML += /*html*/ `
     <div class="pokedex-wrapper">
@@ -17,7 +18,7 @@ function renderPokeCard(allPokemon) {
             </div>
             <div class="types card-types">
                 <p>Type 1: ${allPokemon['types'][0]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][0]['type']['name'].slice(1)}</p>
-                <p>Type 2: ${allPokemon['types'][1] ? allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1) : '---'}</p>
+                ${type2Html}
             </div>
             <div class="image-container">
                 <img id="pokemon-image" src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
@@ -39,6 +40,7 @@ function renderPokeCard(allPokemon) {
 
 function renderPokedexHTML(pokemonType, bgColor, id, allPokemon) {
     let mainContainer = document.getElementById('main-container');
+    let type2Html = allPokemon['types'][1] ? `<p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}</p>` : '';
     mainContainer.innerHTML += /*html*/ `
         <div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemonCard(${allPokemon['id']})">
             <div class="headline">
@@ -49,7 +51,7 @@ function renderPokedexHTML(pokemonType, bgColor, id, allPokemon) {
             </div>
             <div class="types">
                 <p>Type 1: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}</p>
-                <p>Type 2: ${allPokemon['types'][1] ? allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1) : '---'}</p>
+                ${type2Html}
             </div>
             <img src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
         </div>`;
