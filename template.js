@@ -1,4 +1,11 @@
 // RENDER HTML -----------------------------------------------------------------------------------------------------------
+
+/**
+ * Renders a detailed view of a single Pokémon card. It displays the Pokémon's name, ID, types, and image.
+ * If the Pokémon has a second type, it is also displayed. This function also adds navigation buttons for
+ * moving to the previous or next Pokémon and a background color corresponding to the Pokémon's primary type.
+ * @param {Object} allPokemon - An object containing all the details of a single Pokémon.
+ */
 function renderPokeCard(allPokemon) {
     let id = allPokemon['id'];
     let type2Html = allPokemon['types'][1] ? `<p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}</p>` : '';
@@ -38,6 +45,15 @@ function renderPokeCard(allPokemon) {
     `;
 }
 
+/**
+ * Renders a simplified HTML card for a Pokémon in the main Pokédex container. It includes the Pokémon's name, ID,
+ * types, and an image. If the Pokémon has a second type, it is also displayed. The background color of the card
+ * corresponds to the Pokémon's primary type. Each card is clickable, which triggers the detailed Pokémon view.
+ * @param {string} pokemonType - The primary type of the Pokémon, used to set the card's background color.
+ * @param {string} bgColor - The background color corresponding to the Pokémon's primary type.
+ * @param {number} id - The ID of the Pokémon.
+ * @param {Object} allPokemon - An object containing all the details of the Pokémon.
+ */
 function renderPokedexHTML(pokemonType, bgColor, id, allPokemon) {
     let mainContainer = document.getElementById('main-container');
     let type2Html = allPokemon['types'][1] ? `<p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}</p>` : '';

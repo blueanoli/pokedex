@@ -1,14 +1,42 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * An array to store the Pokémon that are currently rendered in the Pokédex UI. This can include a subset of `allPokemon`
  * if pagination or filtering is applied.
- * @type {Array<Object>}
+ * @type {Array&lt;Object>}
  */
 let pokedex = [];
 
 /**
  * A global array that stores all Pokémon data fetched from the API. Each element in the array is an object
  * containing detailed information about a single Pokémon, such as its name, type, stats, and more.
- * @type {Array<Object>}
+ * @type {Array&lt;Object>}
  */
 let allPokemon = [];
 
@@ -57,7 +85,7 @@ async function init() {
  * Loads the initial set of Pokémon data asynchronously from a predefined base URL.
  */
 async function loadInitialPokemon() {
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i &lt;= 20; i++) {
         const url = `${BASE_URL}${i}/`;
         let response = await fetch(url);
         let pokeData = await response.json();
@@ -70,7 +98,7 @@ async function loadInitialPokemon() {
  * starting from the 21st entry up to the 250th.
  */
 async function loadRemainingPokemon() {
-    for (let i = 21; i <= 250; i++) {
+    for (let i = 21; i &lt;= 250; i++) {
         const url = `${BASE_URL}${i}/`;
         let response = await fetch(url);
         let pokeData = await response.json();
@@ -84,7 +112,7 @@ async function loadRemainingPokemon() {
  */
 function loadMorePokemon() {
     let newLimit = Math.min(displayedPokemon + 20, 250);
-    for (let i = displayedPokemon; i < newLimit; i++) {
+    for (let i = displayedPokemon; i &lt; newLimit; i++) {
         let pokeData = allPokemon[i];
         let pokemonType = pokeData['types'][0]['type']['name'];
         let bgColor = TYPE_COLORS[pokemonType];
@@ -100,7 +128,7 @@ function loadMorePokemon() {
  * Renders the initial set of Pokémon in the Pokédex view, based on the currently displayed Pokémon count.
  */
 function renderInitialPokedex() {
-    for (let i = 0; i < displayedPokemon; i++) {
+    for (let i = 0; i &lt; displayedPokemon; i++) {
         let pokeData = allPokemon[i];
         let pokemonType = pokeData['types'][0]['type']['name'];
         let bgColor = TYPE_COLORS[pokemonType];
@@ -134,7 +162,7 @@ function hidePokeCard() {
 function adjustNavigationArrows(currentPokemonId) {
     const maxPokemonId = 250; 
 
-    if (currentPokemonId <= 1) {
+    if (currentPokemonId &lt;= 1) {
         hidePreviousArrow();
     } else {
        showPreviousArrow();
@@ -151,7 +179,7 @@ function adjustNavigationArrows(currentPokemonId) {
  */
 function showNextPokemon() {
     let currentPokemonId = parseInt(document.getElementById('pokemon-id').innerText);
-    if (currentPokemonId < 250) {
+    if (currentPokemonId &lt; 250) {
         currentPokemonId++;
         showPokemonCard(currentPokemonId);
     }
@@ -191,7 +219,7 @@ function filterPokemonBySearch(search) {
     clearMainContainer();
     hideLoadMoreButton();
 
-    for (let i = 0; i < allPokemon.length; i++) {
+    for (let i = 0; i &lt; allPokemon.length; i++) {
         if (allPokemon[i]['name'].toLowerCase().includes(search)) {
             renderPokedexHTML(allPokemon[i]['types'][0]['type']['name'], TYPE_COLORS[allPokemon[i]['types'][0]['type']['name']], i + 1, allPokemon[i]);
         }
@@ -244,4 +272,26 @@ function hideNextArrow() {
 function hidePreviousArrow() {
     document.getElementById('previous').style.opacity = '0';
     document.getElementById('previous').style.cursor = 'default';
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BASE_URL">BASE_URL</a></li><li><a href="global.html#TYPE_COLORS">TYPE_COLORS</a></li><li><a href="global.html#adjustNavigationArrows">adjustNavigationArrows</a></li><li><a href="global.html#allPokemon">allPokemon</a></li><li><a href="global.html#displayedPokemon">displayedPokemon</a></li><li><a href="global.html#filterPokemon">filterPokemon</a></li><li><a href="global.html#filterPokemonBySearch">filterPokemonBySearch</a></li><li><a href="global.html#hidePokeCard">hidePokeCard</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadInitialPokemon">loadInitialPokemon</a></li><li><a href="global.html#loadMorePokemon">loadMorePokemon</a></li><li><a href="global.html#loadRemainingPokemon">loadRemainingPokemon</a></li><li><a href="global.html#pokedex">pokedex</a></li><li><a href="global.html#renderInitialPokedex">renderInitialPokedex</a></li><li><a href="global.html#renderPokeCard">renderPokeCard</a></li><li><a href="global.html#renderPokedexHTML">renderPokedexHTML</a></li><li><a href="global.html#resetPokedexView">resetPokedexView</a></li><li><a href="global.html#showNextPokemon">showNextPokemon</a></li><li><a href="global.html#showPokemonCard">showPokemonCard</a></li><li><a href="global.html#showPreviousPokemon">showPreviousPokemon</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 12 2024 18:55:17 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

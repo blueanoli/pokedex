@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: template.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: template.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// RENDER HTML -----------------------------------------------------------------------------------------------------------
+
+/**
+ * Renders a detailed view of a single Pokémon card. It displays the Pokémon's name, ID, types, and image.
+ * If the Pokémon has a second type, it is also displayed. This function also adds navigation buttons for
+ * moving to the previous or next Pokémon and a background color corresponding to the Pokémon's primary type.
+ * @param {Object} allPokemon - An object containing all the details of a single Pokémon.
+ */
+function renderPokeCard(allPokemon) {
+    let id = allPokemon['id'];
+    let type2Html = allPokemon['types'][1] ? `&lt;p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}&lt;/p>` : '';
+    document.getElementById('pokedex').innerHTML = '';
+    document.getElementById('pokedex').innerHTML += /*html*/ `
+    &lt;div class="pokedex-wrapper">
+        &lt;div class="navigation-btn">
+            &lt;img onclick="showPreviousPokemon()" id="previous" src="./img/previous.png" alt="PREVIOUS">
+            &lt;img onclick="showNextPokemon()" id="next" src="./img/next.png" alt="NEXT">
+        &lt;/div>
+        &lt;div onclick="hidePokeCard()" class="pokedex" style="background-color: ${TYPE_COLORS[allPokemon['types'][0]['type']['name']]};">
+            &lt;div id="pokemon-name" class="card-headline">
+                &lt;h1>${allPokemon['name'].charAt(0).toUpperCase() + allPokemon['name'].slice(1)}&lt;/h1>
+                &lt;div class="card-headline-id">
+                &lt;h2 id="pokemon-id">${id}&lt;/h2>
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="types card-types">
+                &lt;p>Type 1: ${allPokemon['types'][0]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][0]['type']['name'].slice(1)}&lt;/p>
+                ${type2Html}
+            &lt;/div>
+            &lt;div class="image-container">
+                &lt;img id="pokemon-image" src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
+            &lt;/div>
+        &lt;/div>
+        &lt;div onclick="hidePokeCard()" class="info-container">
+            &lt;nav>
+                &lt;h2>Base Stats&lt;/h2>
+            &lt;/nav>
+            &lt;div class="base-stats">
+                &lt;div class="myChart">
+                    &lt;canvas id="myChart">&lt;/canvas>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+    `;
+}
+
+/**
+ * Renders a simplified HTML card for a Pokémon in the main Pokédex container. It includes the Pokémon's name, ID,
+ * types, and an image. If the Pokémon has a second type, it is also displayed. The background color of the card
+ * corresponds to the Pokémon's primary type. Each card is clickable, which triggers the detailed Pokémon view.
+ * @param {string} pokemonType - The primary type of the Pokémon, used to set the card's background color.
+ * @param {string} bgColor - The background color corresponding to the Pokémon's primary type.
+ * @param {number} id - The ID of the Pokémon.
+ * @param {Object} allPokemon - An object containing all the details of the Pokémon.
+ */
+function renderPokedexHTML(pokemonType, bgColor, id, allPokemon) {
+    let mainContainer = document.getElementById('main-container');
+    let type2Html = allPokemon['types'][1] ? `&lt;p>Type 2: ${allPokemon['types'][1]['type']['name'].charAt(0).toUpperCase() + allPokemon['types'][1]['type']['name'].slice(1)}&lt;/p>` : '';
+    mainContainer.innerHTML += /*html*/ `
+        &lt;div class="pokemon" style="background-color: ${bgColor};" onclick="showPokemonCard(${allPokemon['id']})">
+            &lt;div class="headline">
+                &lt;h1>${allPokemon['name'].charAt(0).toUpperCase() + allPokemon['name'].slice(1)}&lt;/h1>
+                &lt;div class="headline-id">
+                    &lt;h3>${id}&lt;/h3>
+                &lt;/div>
+            &lt;/div>
+            &lt;div class="types">
+                &lt;p>Type 1: ${pokemonType.charAt(0).toUpperCase() + pokemonType.slice(1)}&lt;/p>
+                ${type2Html}
+            &lt;/div>
+            &lt;img src="${allPokemon['sprites']['other']['dream_world']['front_default']}" alt="${allPokemon.name}">
+        &lt;/div>`;
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BASE_URL">BASE_URL</a></li><li><a href="global.html#TYPE_COLORS">TYPE_COLORS</a></li><li><a href="global.html#adjustNavigationArrows">adjustNavigationArrows</a></li><li><a href="global.html#allPokemon">allPokemon</a></li><li><a href="global.html#displayedPokemon">displayedPokemon</a></li><li><a href="global.html#filterPokemon">filterPokemon</a></li><li><a href="global.html#filterPokemonBySearch">filterPokemonBySearch</a></li><li><a href="global.html#hidePokeCard">hidePokeCard</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#loadInitialPokemon">loadInitialPokemon</a></li><li><a href="global.html#loadMorePokemon">loadMorePokemon</a></li><li><a href="global.html#loadRemainingPokemon">loadRemainingPokemon</a></li><li><a href="global.html#pokedex">pokedex</a></li><li><a href="global.html#renderInitialPokedex">renderInitialPokedex</a></li><li><a href="global.html#renderPokeCard">renderPokeCard</a></li><li><a href="global.html#renderPokedexHTML">renderPokedexHTML</a></li><li><a href="global.html#resetPokedexView">resetPokedexView</a></li><li><a href="global.html#showNextPokemon">showNextPokemon</a></li><li><a href="global.html#showPokemonCard">showPokemonCard</a></li><li><a href="global.html#showPreviousPokemon">showPreviousPokemon</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 12 2024 18:55:17 GMT+0100 (Mitteleuropäische Normalzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
